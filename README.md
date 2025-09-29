@@ -3,58 +3,58 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.x](https://img.shields.io/badge/python-3.x-blue.svg)](https://www.python.org/downloads/)
 
-Cowrieハニーポットを検出するための、シンプルかつ強力なPythonスクリプトです。
+A simple yet powerful Python script for detecting Cowrie SSH honeypots.
 
 ---
-## 概要
+## Overview
 
-`cowrie_detector.py`は、指定されたSSHサーバーが人気のハニーポット「Cowrie」であるかどうかを、複数の指標に基づいて分析・特定するツールです。ハニーポットの研究者や、ペネトレーションテストの初期調査などで、ターゲットが本物のシステムか、あるいは巧妙に仕掛けられた罠かを見分ける手助けをします。
+`cowrie_detector.py` is a tool that analyzes and identifies whether a given SSH server is the popular honeypot "Cowrie," based on multiple indicators. It's designed to help honeypot researchers and penetration testers during initial reconnaissance to distinguish between a real system and a cleverly disguised trap.
 
-## 実行結果のスクリーンショット
+## Screenshot
 
 ![Cowrie Detector Screenshot](screenshot.png) 
-*注: 上記画像を表示するには、`screenshot.png`という名前で実行結果のスクリーンショットをリポジトリにアップロードしてください。*
+*Note: To display the image above, please upload a screenshot of the script's output named `screenshot.png` to your repository.*
 
 ---
-## 主な機能
+## Key Features
 
-* **多層的な分析**: SSHバナー、認証情報、システムの振る舞い、環境情報を組み合わせ、総合的にハニーポットを判断します。
-* **軽量＆ポータブル**: Python3と`paramiko`ライブラリのみで動作し、複雑なセットアップは不要です。
-* **信頼度スコアリング**: 検出された指標に基づき、ターゲットがCowrieである可能性をパーセンテージで表示します。
-
----
-## 仕組み (How It Works)
-
-このツールは、以下の4段階の分析を通じてCowrieを特定します。
-
-1.  **バナー分析**: ターゲットサーバーのSSHバナーを取得し、Cowrieがよく使用する既知のバージョン文字列と比較します。
-2.  **認証プローブ**: `root:root`のような一般的なデフォルト認証情報や、Cowrie特有の`phil:phil`でのログインを試みます。
-3.  **行動分析**: 認証成功後、基本的なコマンド(`whoami`など)を実行します。Cowrieは、特定の状況下で即座にチャネルを切断する不自然な挙動を示すことがあり、これを検出します。
-4.  **環境フィンガープリント**: `uname -a`や`cat /etc/passwd`を実行し、返却されるカーネルバージョンやユーザーリストがCowrieのデフォルト環境と一致しないか確認します。
+* **Multi-layered Analysis**: Makes a comprehensive judgment by combining SSH banner, credentials, system behavior, and environment information.
+* **Lightweight & Portable**: Runs with only Python 3 and the `paramiko` library, requiring no complex setup.
+* **Confidence Scoring**: Displays the probability of the target being a Cowrie honeypot as a percentage based on the detected indicators.
 
 ---
-## 必要なもの
+## How It Works
+
+This tool identifies Cowrie through a four-stage analysis:
+
+1.  **Banner Analysis**: It fetches the target server's SSH banner and compares it against known version strings commonly used by Cowrie.
+2.  **Authentication Probing**: It attempts to log in using common default credentials like `root:root` and the Cowrie-specific `phil:phil`.
+3.  **Behavioral Analysis**: After a successful login, it executes basic commands like `whoami`. It detects unnatural behaviors, such as the immediate channel closure that Cowrie sometimes exhibits.
+4.  **Environment Fingerprinting**: It runs commands like `uname -a` and `cat /etc/passwd` to check if the returned kernel version and user list match Cowrie's default environment.
+
+---
+## Prerequisites
 
 * Python 3.x
-* `paramiko` ライブラリ
+* `paramiko` library
 
 ---
-## インストール
+## Installation
 
-1.  **リポジトリをクローンします。**
+1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/あなたのユーザー名/cowrie_detector.git](https://github.com/あなたのユーザー名/cowrie_detector.git)
+    git clone [https://github.com/YOUR_USERNAME/cowrie_detector.git](https://github.com/YOUR_USERNAME/cowrie_detector.git)
     cd cowrie_detector
     ```
 
-2.  **必要なライブラリをインストールします。**
+2.  **Install the required library:**
     ```bash
     pip install paramiko
     ```
 ---
-## 使い方
+## Usage
 
-ターミナルから以下のように実行します。
+Run the script from your terminal as follows:
 
 ```bash
-python3 cowrie_detector.py <ターゲットのIPアドレス> [ポート番号]
+python3 cowrie_detector.py <TARGET_IP_ADDRESS> [PORT]
