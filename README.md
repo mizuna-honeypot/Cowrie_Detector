@@ -10,11 +10,6 @@ A simple yet powerful Python script for detecting Cowrie SSH honeypots.
 
 `cowrie_detector.py` is a tool that analyzes and identifies whether a given SSH server is the popular honeypot "Cowrie," based on multiple indicators. It's designed to help honeypot researchers and penetration testers during initial reconnaissance to distinguish between a real system and a cleverly disguised trap.
 
-## Screenshot
-
-![Cowrie Detector Screenshot](screenshot.png) 
-*Note: To display the image above, please upload a screenshot of the script's output named `screenshot.png` to your repository.*
-
 ---
 ## Key Features
 
@@ -43,7 +38,7 @@ This tool identifies Cowrie through a four-stage analysis:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/YOUR_USERNAME/cowrie_detector.git](https://github.com/YOUR_USERNAME/cowrie_detector.git)
+    git clone https://github.com/mizuna-honeypot/cowrie_detector.git
     cd cowrie_detector
     ```
 
