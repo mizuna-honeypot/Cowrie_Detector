@@ -1,0 +1,6 @@
+# Python 仮想環境
+cowrie-env/
+detecter-env/
+
+# Pythonが自動生成するキャッシュファイル
+__pycache__/
