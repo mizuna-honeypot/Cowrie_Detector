@@ -24,10 +24,14 @@ Cowrieハニーポットを、複数の指標に基づいて高精度に検出�
 ## インストール (Ubuntu)
 
 このツールは、Pythonの仮想環境（`venv`）上に構築することを強く推奨します。これにより、お使いのシステムの他のPythonプロジェクトに影響を与えることなく、安全にライブラリを管理できます。
+0.  **OS更新**
+    ```bash
+    sudo apt update && sudo apt upgrade -y
+    ```
+
 1.  **前提ソフトウェアをインストールします。**
     `git`や`python3-venv`など、ツールを実行するために必要なシステムパッケージをインストールします。
     ```bash
-    sudo apt update
     sudo apt install -y git python3-venv python3-pip libssl-dev libffi-dev build-essential
     ```
 
